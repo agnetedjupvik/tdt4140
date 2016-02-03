@@ -1,4 +1,10 @@
-# tdt4140
+# WATCHDOG 
 
+A dog that watches you and maybe bites.
 School project for TDT4140 Software Development.
-Group consisting of Agnete Djupvik, Even Skari, Simen Jensen & Espen Meidell
+Feature team 65 and 66
+Agnete Djupvik, Even Skari, Simen Jensen (javaguru/programmeringsleder), Espen Meidell
+Julie Sildnes, Andreas Børhaug, John Chen, August Holm
+
+
+peace out
