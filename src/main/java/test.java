@@ -27,8 +27,8 @@ public class test {
 
     public static Speedpoint newSpeedPoint(String[] data, float startTime) {
             Speedpoint speedpoint = new Speedpoint();
-            speedpoint.speed = (Float.valueOf(data[1].substring(data[1].indexOf(':')+1)));
-            speedpoint.time = (Float.valueOf(data[2].substring(12,data[2].length()-1))) - startTime;
+            speedpoint.setSpeed((Float.valueOf(data[1].substring(data[1].indexOf(':')+1))));
+            speedpoint.setTime((Float.valueOf(data[2].substring(12,data[2].length()-1))) - startTime);
         return speedpoint;
     }
 }
