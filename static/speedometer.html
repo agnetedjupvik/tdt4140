@@ -67,7 +67,7 @@
     <script>
         angular.module('speedometer', ['ngResource'])
                 .controller('SpeedController', ['$scope', '$resource', '$interval', function($scope, $resource, $interval) {
-                    var rest = $resource('');
+                    var rest = $resource('/api');
                     $scope.limit = 20;
                     $interval(function() {
                         rest.get(function(data) {
