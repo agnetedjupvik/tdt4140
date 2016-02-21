@@ -57,6 +57,10 @@ public class InputSimulator implements Input {
         while (index < speed.size() && currTime > speed.get(index).getTime() + timeDisplacement) {
             index++;
         }
+        if (index >= speed.size()) {
+            timeDisplacement = getTimeDisplacement(speed.get(0));
+            index = 0;
+        }
         return speed.get(index);
     }
 }
