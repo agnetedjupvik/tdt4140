@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html ng-app="speedometer">
+<head>
+    <meta charset="UTF-8">
+    <title>Watchdog</title>
+    <style>
+        body {
+            background: #231F20;
+            font-family: sans-serif;
+        }
+
+        #speedometer {
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+
+        #speed-header {
+            font-size: 10vh;
+            color: white;
+            margin: 5vh 5vw;
+            display: block;
+        }
+
+        #speed-container {
+            width: 100vw;
+            text-align: center;
+        }
+
+        #speed-current {
+            font-size: 50vh;
+            color: #231F20;
+        }
+
+        .speed-good {
+            color: #4FBE49 !important;
+        }
+
+        .speed-okay {
+            color: #E0E81B !important;
+        }
+
+        .speed-bad {
+            color: #ED2126 !important;
+        }
+
+        #speed-unit {
+            font-size: 10vh;
+            color: white;
+        }
+
+        #speed-description {
+            font-size: 10vh;
+            color: gray;
+            margin: 5vh 0;
+            display: block;
+            text-align: center;
+        }
+
+        #speed-top {
+            color: white;
+        }
+
+    </style>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script>
+        angular.module('speedometer', ['ngResource'])
+                .controller('SpeedController', ['$scope', '$resource', '$interval', function($scope, $resource, $interval) {
+                    var rest = $resource('');
+                    $scope.limit = 20;
+                    $interval(function() {
+                        rest.get(function(data) {
+                            $scope.speed = Math.round(data.value);
+                            if ($scope.speed > $scope.limit + 5) {
+                                $scope.status = 'bad';
+                            } else if ($scope.speed > $scope.limit) {
+                                $scope.status = 'okay';
+                            } else {
+                                $scope.status = 'good';
+                            }
+                        });
+                    }, 200);
+                }]);
+    </script>
+</head>
+<body>
+<div id="speedometer" ng-controller="SpeedController as speed">
+    <span id="speed-header">YOUR SPEED:</span>
+    <div id="speed-container">
+        <span id="speed-current" class="speed-{{status}}">{{speed}}</span><span id="speed-unit">MPH</span>
+    </div>
+    <span id="speed-description">SPEED LIMIT: <span id="speed-top">{{limit}}</span></span>
+</div>
+</body>
+</html>

@@ -55,7 +55,7 @@ public class InputSimulator implements Input {
     @Override
     public Speedpoint getLatestSpeedpoint() {
         double currTime = System.currentTimeMillis() / 1000.0;
-        while (currTime > speed.get(index).getTime() + timeDisplacement) {
+        while (index < speed.size() && currTime > speed.get(index).getTime() + timeDisplacement) {
             index++;
         }
         return speed.get(index);
