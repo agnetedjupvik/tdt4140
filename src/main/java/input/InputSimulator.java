@@ -2,9 +2,8 @@ package input;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +14,8 @@ public class InputSimulator implements Input {
     private int index;
 
     public InputSimulator(String rawPath) {
-        Path path = Paths.get(rawPath);
-        try (BufferedReader reader = Files.newBufferedReader(path)) {
+        InputStream in = getClass().getResourceAsStream("/testfiles/" + rawPath);
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
             parseData(reader);
         } catch (IOException e) {
             e.printStackTrace();

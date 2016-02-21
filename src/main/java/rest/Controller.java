@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class Controller {
 
-    InputSimulator inputSimulator = new InputSimulator("src/main/resources/downtown-crosstown.json");
+    InputSimulator inputSimulator = new InputSimulator("downtown-crosstown.json");
 
     @RequestMapping("/")
     public ModelAndView rootRedirect() {
