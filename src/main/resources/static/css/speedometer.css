@@ -1,0 +1,56 @@
+body {
+    background: #231F20;
+    font-family: sans-serif;
+}
+
+#speedometer {
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+#speed-header {
+    font-size: 10vh;
+    color: white;
+    margin: 5vh 5vw;
+    display: block;
+}
+
+#speed-container {
+    width: 100vw;
+    text-align: center;
+}
+
+#speed-current {
+    font-size: 50vh;
+    color: #231F20;
+}
+
+.speed-good {
+    color: #4FBE49 !important;
+}
+
+.speed-okay {
+    color: #E0E81B !important;
+}
+
+.speed-bad {
+    color: #ED2126 !important;
+}
+
+#speed-unit {
+    font-size: 10vh;
+    color: white;
+}
+
+#speed-description {
+    font-size: 10vh;
+    color: gray;
+    margin: 5vh 0;
+    display: block;
+    text-align: center;
+}
+
+#speed-top {
+    color: white;
+}
