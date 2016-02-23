@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Watchdog</title>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="https://rawgit.com/nnnick/Chart.js/master/Chart.min.js"></script>
+    <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+    <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css">
+
+</head>
+<body ng-app="myApp">
+  <div ng-controller="MainController">
+
+<canvas id="line" class="chart chart-line" data="data" labels="labels"
+    legend="true" series="series" click="onClick"></canvas>
+
+</div>
+</body>
+</html>
