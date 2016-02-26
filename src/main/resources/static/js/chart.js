@@ -73,10 +73,11 @@ app.controller("ChartController", ["$scope", "$resource", "$interval", "$timeout
                 $scope.data[0].shift();
                 $scope.labels.shift();
             }
-            $scope.labels.push(new Date(speedpoint.time));
+            var date = new Date(speedpoint.time*1000);
+            $scope.labels.push(date.getHours()+":"+date.getMinutes()+":"+date.getSeconds());
             $scope.data[0].push(speedpoint.value);
         });
-    }, 100);
+    }, 1000);
 
 
 
