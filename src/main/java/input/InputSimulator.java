@@ -63,4 +63,10 @@ public class InputSimulator implements Input {
         }
         return speed.get(index);
     }
+
+    public List<Speedpoint> getSpeed() {
+        List<Speedpoint> newspeed = new ArrayList<>();
+
+        return speed;
+    }
 }
