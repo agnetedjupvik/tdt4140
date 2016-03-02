@@ -10,6 +10,7 @@ public class inputSimTest {
     public void testSimulator() {
         InputSimulator inputSimulator = new InputSimulator("speedTest.json");
         Assert.assertNotNull(inputSimulator);
+        Assert.assertNotNull(inputSimulator.getLatestSpeedpoint());
     }
 
     @Test
