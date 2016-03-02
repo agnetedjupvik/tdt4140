@@ -10,6 +10,11 @@ import java.util.List;
 public class InputSimulator implements Input {
 
     private List<Speedpoint> speed = new ArrayList<>();
+
+    public double getTimeDisplacement() {
+        return timeDisplacement;
+    }
+
     private double timeDisplacement;
     private int index;
 
