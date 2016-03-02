@@ -14,7 +14,6 @@ import java.util.HashMap;
 public class Controller {
 
     InputSimulator inputSimulator = new InputSimulator("downtown-crosstown.json");
-
     @RequestMapping("/")
     public ModelAndView rootRedirect() {
         return new ModelAndView("redirect:/speedometer.html");
