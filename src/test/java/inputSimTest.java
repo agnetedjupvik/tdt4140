@@ -1,6 +1,5 @@
 import input.InputSimulator;
 import input.Speedpoint;
-import javafx.scene.Cursor;
 import org.junit.Assert;
 import org.junit.Test;
 
