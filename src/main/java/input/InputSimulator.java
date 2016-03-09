@@ -10,6 +10,7 @@ import java.util.List;
 public class InputSimulator implements Input {
 
     private List<Speedpoint> speed = new ArrayList<>();
+    private List<SpeedLimitPoint> speedLimit = new ArrayList<>();
 
     public double getTimeDisplacement() {
         return timeDisplacement;
@@ -51,8 +52,13 @@ public class InputSimulator implements Input {
     }
 
     private void readLine(String[] data) {
-        if (parseDatatype(data[0]) == Datatype.vehicle_speed) {
-            speed.add(new Speedpoint(data[1], parseTime(data[2])));
+        switch (parseDatatype(data[0])) {
+            case vehicle_speed:
+                speed.add(new Speedpoint(data[1], parseTime(data[2])));
+                break;
+            case speed_limit:
+                speedLimit.add(new SpeedLimitPoint(data[1], parseTime(data[2])));
+                break;
         }
     }
 
@@ -74,4 +80,5 @@ public class InputSimulator implements Input {
 
         return speed;
     }
+
 }
