@@ -39,6 +39,7 @@ app.controller("ChartController", ["$scope", "$resource", "$interval", "$timeout
         ];
     $scope.currentspeed = 0;
     $scope.series = ["Speed Data (mph)"];
+    $scope.supress = false;
     var rest = $resource("/api");
     $interval(function () {
         rest.get(function (speedpoint) {
@@ -48,9 +49,21 @@ app.controller("ChartController", ["$scope", "$resource", "$interval", "$timeout
                     $scope.labels.shift();
                 }
                 var date = new Date(speedpoint.time * 1000);
-                $scope.labels.push(date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
-                $scope.data[0].push(speedpoint.value);
+
+                if (!$scope.currentspeed){
+                    if ($scope.supress){
+                        $scope.labels[$scope.labels.length-1] = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+                    } else {
+                        $scope.data[0].push(speedpoint.value);
+                        $scope.labels.push(date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
+                    }
+                } else {
+                    $scope.data[0].push(speedpoint.value);
+                    $scope.labels.push(date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
+                }
+                console.log($scope.currentspeed);
                 $scope.currentspeed = speedpoint.value;
+
             }
         });
     }, 1000);

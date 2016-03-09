@@ -20,7 +20,8 @@
         <h1>Live Speed Graph</h1>
         <canvas id="line" class="chart chart-line" data="data" labels="labels"
                 legend="true" series="series" click="onClick"></canvas>
-        <button ng-click="pause()">{{buttonmessage}}</button> Current speed: {{currentspeed | number:2}}mph
+        <button ng-click="pause()">{{buttonmessage}}</button> Current speed: {{currentspeed | number:2}}mph,
+        <input type="checkbox" ng-model="supress"> Ignore 0 mph
     </div>
 </div>
 </body>
