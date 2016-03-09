@@ -9,8 +9,9 @@ import java.util.List;
 
 public class InputSimulator implements Input {
 
-    private List<Speedpoint> speed = new ArrayList<>();
-    private List<SpeedLimitPoint> speedLimit = new ArrayList<>();
+    private List<Datapoint> datapoints = new ArrayList<>();
+
+    private Snapshot snapshot = new Snapshot();
 
     public double getTimeDisplacement() {
         return timeDisplacement;
@@ -26,7 +27,7 @@ public class InputSimulator implements Input {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        timeDisplacement = getTimeDisplacement(speed.get(0));
+        timeDisplacement = getTimeDisplacement(datapoints.get(12000));//TODO: Skal egentlig være 0
     }
 
     public static Datatype parseDatatype(String string) {
@@ -34,7 +35,12 @@ public class InputSimulator implements Input {
     }
 
     public static double parseTime(String string) {
-        return Double.valueOf(string.substring(12, string.length() - 1));
+        try {
+            return Double.valueOf(string.substring(12, string.length() - 1));
+        } catch (Exception e) {
+
+        }
+        return 404;
     }
 
     private static double getTimeDisplacement(Datapoint point) {
@@ -52,45 +58,46 @@ public class InputSimulator implements Input {
     }
 
     private void readLine(String[] data) {
-        switch (parseDatatype(data[0])) {
-            case vehicle_speed:
-                speed.add(new Speedpoint(data[1], parseTime(data[2])));
-                break;
-            case speed_limit:
-                speedLimit.add(new SpeedLimitPoint(data[1], parseTime(data[2])));
-                break;
-        }
+        Datapoint datapoint = new Datapoint(data[1], parseTime(data[2]),parseDatatype(data[0]));
+        datapoints.add(datapoint);
     }
 
     @Override
-    public Speedpoint getLatestSpeedpoint() {
+    public Snapshot getLatestDataPoints() {
         double currTime = System.currentTimeMillis() / 1000.0;
-        while (index < speed.size() && currTime > speed.get(index).getTime() + timeDisplacement) {
+        while (index < datapoints.size() && currTime > datapoints.get(index).getTime() + timeDisplacement) {
             index++;
+            addPoint(datapoints.get(index));
         }
-        if (index >= speed.size()) {
-            timeDisplacement = getTimeDisplacement(speed.get(0));
+        if (index >= datapoints.size()) {
+            timeDisplacement = getTimeDisplacement(datapoints.get(0));
             index = 0;
         }
-        return speed.get(index);
+        return snapshot;
     }
 
-    public SpeedLimitPoint getLateSpeedLimitPoint(){
-        double currTime = System.currentTimeMillis() / 1000.0;
-        while (index < speedLimit.size() && currTime > speedLimit.get(index).getTime() + timeDisplacement) {
-            index++;
+    public void addPoint(Datapoint datapoint) {
+        switch (datapoint.getDatatype()) {
+            case accelerator_pedal_position: snapshot.accelerator_pedal_position = datapoint; break;
+            case brake_pedal_status: snapshot.brake_pedal_status = datapoint; break;
+            case button_state: snapshot.button_state = datapoint; break;
+            case door_status: snapshot.door_status = datapoint; break;
+            case engine_speed: snapshot.engine_speed = datapoint; break;
+            case fuel_consumed_since_restart: snapshot.fuel_consumed_since_restart = datapoint; break;
+            case fuel_level: snapshot.fuel_level = datapoint; break;
+            case headlamp_status: snapshot.headlamp_status = datapoint; break;
+            case ignition_status: snapshot.ignition_status = datapoint; break;
+            case latitude: snapshot.latitude = datapoint; break;
+            case longitude: snapshot.longitude = datapoint; break;
+            case odometer: snapshot.odometer = datapoint; break;
+            case steering_wheel_angle: snapshot.steering_wheel_angle = datapoint; break;
+            case torque_at_transmission: snapshot.torque_at_transmission = datapoint; break;
+            case transmission_gear_position: snapshot.transmission_gear_position = datapoint; break;
+            case vehicle_speed: snapshot.vehicle_speed = datapoint; break;
+            case speed_limit: snapshot.speed_limit = datapoint; break;
+            case windshield_wiper_status: snapshot.speed_limit = datapoint; break;
         }
-        if (index >= speedLimit.size()) {
-            timeDisplacement = getTimeDisplacement(speed.get(0));
-            index = 0;
-        }
-        return speedLimit.get(index);
     }
 
-    public List<Speedpoint> getSpeed() {
-        List<Speedpoint> newspeed = new ArrayList<>();
-
-        return speed;
-    }
 
 }

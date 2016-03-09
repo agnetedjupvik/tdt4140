@@ -42,7 +42,8 @@ app.controller("ChartController", ["$scope", "$resource", "$interval", "$timeout
     $scope.supress = false;
     var rest = $resource("/api");
     $interval(function () {
-        rest.get(function (speedpoint) {
+        rest.get(function (datapoints) {
+            var speedpoint = datapoints.vehicle_speed;
             if (running) {
                 if ($scope.data[0].length > 29) {
                     $scope.data[0].shift();

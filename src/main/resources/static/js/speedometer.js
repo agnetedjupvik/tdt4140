@@ -4,7 +4,9 @@ angular.module('speedometer', ['ngResource'])
         $scope.limit = 20;
         $interval(function () {
             rest.get(function (data) {
-                $scope.speed = Math.round(data.value);
+                console.log(data);
+                $scope.speed = Math.round(data.vehicle_speed.value);
+                $scope.limit = Math.round(data.speed_limit.value);
                 if ($scope.speed > $scope.limit + 5) {
                     $scope.status = 'bad';
                 } else if ($scope.speed > $scope.limit) {
