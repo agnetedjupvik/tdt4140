@@ -75,6 +75,18 @@ public class InputSimulator implements Input {
         return speed.get(index);
     }
 
+    public SpeedLimitPoint getLateSpeedLimitPoint(){
+        double currTime = System.currentTimeMillis() / 1000.0;
+        while (index < speedLimit.size() && currTime > speedLimit.get(index).getTime() + timeDisplacement) {
+            index++;
+        }
+        if (index >= speedLimit.size()) {
+            timeDisplacement = getTimeDisplacement(speed.get(0));
+            index = 0;
+        }
+        return speedLimit.get(index);
+    }
+
     public List<Speedpoint> getSpeed() {
         List<Speedpoint> newspeed = new ArrayList<>();
 
