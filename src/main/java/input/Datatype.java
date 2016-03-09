@@ -17,5 +17,6 @@ public enum Datatype {
     torque_at_transmission,
     transmission_gear_position,
     vehicle_speed,
+    speed_limit,
     windshield_wiper_status
 }
