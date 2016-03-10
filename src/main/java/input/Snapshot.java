@@ -19,6 +19,7 @@ public class Snapshot {
     public Datapoint vehicle_speed;
     public Datapoint speed_limit;
     public Datapoint windshield_wiper_status;
+    public Datapoint turning_lights;
 
     public void addPoint(Datapoint datapoint) {
         switch (datapoint.getDatatype()) {
@@ -39,7 +40,12 @@ public class Snapshot {
             case transmission_gear_position: transmission_gear_position = datapoint; break;
             case vehicle_speed: vehicle_speed = datapoint; break;
             case speed_limit: speed_limit = datapoint; break;
-            case windshield_wiper_status: speed_limit = datapoint; break;
+            case windshield_wiper_status:
+                windshield_wiper_status = datapoint;
+                break;
+            case turning_lights:
+                turning_lights = datapoint;
+                break;
         }
     }
 
