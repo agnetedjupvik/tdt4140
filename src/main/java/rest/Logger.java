@@ -12,19 +12,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class Logger implements CommandLineRunner{
 
-    Snapshot snapshot;
+    Snapshot snapshot = new Snapshot();
 
     @Async
-    public void getSnapshot(Input input) throws InterruptedException, JsonProcessingException {
+    public Snapshot getSnapshot(Input input, Snapshot lastSnapshot) throws InterruptedException, JsonProcessingException {
         while (true) {
-            Snapshot newSnapshot = input.getLatestDataPoints();
-            System.out.println(new ObjectMapper().writeValueAsString(snapshot));
+            Snapshot newSnapshot = new Snapshot(input.getLatestDataPoints());
+            System.out.print(Snapshot.differenceToJson(newSnapshot, lastSnapshot));
+            lastSnapshot = newSnapshot;
             Thread.sleep(200L);
         }
     }
 
     @Override
     public void run(String... args) throws Exception {
-        this.getSnapshot(Application.inputSimulator);
+        this.snapshot = this.getSnapshot(Application.inputSimulator, snapshot);
     }
 }
