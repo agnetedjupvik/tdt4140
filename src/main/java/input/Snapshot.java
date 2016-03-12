@@ -115,36 +115,51 @@ public class Snapshot {
         }
     }
 
-    public static String differenceToJson(Snapshot snapshot1, Snapshot snapshot2) throws JsonProcessingException {
+    public static String differenceToJson(Snapshot snapshot1, Snapshot snapshot2, ObjectMapper mapper) throws JsonProcessingException {
         String json = "";
-        if(isChanged(snapshot1.accelerator_pedal_position, snapshot2.accelerator_pedal_position))json+=toJson(snapshot1.accelerator_pedal_position);
-        if(isChanged(snapshot1.brake_pedal_status, snapshot2.brake_pedal_status))json+=toJson(snapshot1.brake_pedal_status);
-        if(isChanged(snapshot1.button_state, snapshot2.button_state))json+=toJson(snapshot1.button_state);
-        if(isChanged(snapshot1.door_status, snapshot2.door_status))json+=toJson(snapshot1.door_status);
-        if(isChanged(snapshot1.engine_speed, snapshot2.engine_speed))json+=toJson(snapshot1.engine_speed);
-        if(isChanged(snapshot1.fuel_consumed_since_restart, snapshot2.fuel_consumed_since_restart))json+=toJson(snapshot1.fuel_consumed_since_restart);
-        if(isChanged(snapshot1.fuel_level, snapshot2.fuel_level))json+=toJson(snapshot1.fuel_level);
-        if(isChanged(snapshot1.headlamp_status, snapshot2.headlamp_status))json+=toJson(snapshot1.headlamp_status);
-        if(isChanged(snapshot1.ignition_status, snapshot2.ignition_status))json+=toJson(snapshot1.ignition_status);
-        if(isChanged(snapshot1.latitude, snapshot2.latitude))json+=toJson(snapshot1.latitude);
-        if(isChanged(snapshot1.longitude, snapshot2.longitude))json+=toJson(snapshot1.longitude);
-        if(isChanged(snapshot1.odometer, snapshot2.odometer))json+=toJson(snapshot1.odometer);
-        if(isChanged(snapshot1.steering_wheel_angle, snapshot2.steering_wheel_angle))json+=toJson(snapshot1.steering_wheel_angle);
-        if(isChanged(snapshot1.torque_at_transmission, snapshot2.torque_at_transmission))json+=toJson(snapshot1.torque_at_transmission);
-        if(isChanged(snapshot1.transmission_gear_position, snapshot2.transmission_gear_position))json+=toJson(snapshot1.transmission_gear_position);
-        if(isChanged(snapshot1.vehicle_speed, snapshot2.vehicle_speed))json+=toJson(snapshot1.vehicle_speed);
-        if(isChanged(snapshot1.speed_limit, snapshot2.speed_limit))json+=toJson(snapshot1.speed_limit);
-        if(isChanged(snapshot1.windshield_wiper_status, snapshot2.windshield_wiper_status))json+=toJson(snapshot1.windshield_wiper_status);
-        if(isChanged(snapshot1.turning_lights, snapshot2.turning_lights))json+=toJson(snapshot1.turning_lights);
+        if (isChanged(snapshot1.accelerator_pedal_position, snapshot2.accelerator_pedal_position))
+            json += snapshot1.accelerator_pedal_position.toJson(mapper);
+        if (isChanged(snapshot1.brake_pedal_status, snapshot2.brake_pedal_status))
+            json += snapshot1.brake_pedal_status.toJson(mapper);
+        if (isChanged(snapshot1.button_state, snapshot2.button_state))
+            json += snapshot1.button_state.toJson(mapper);
+        if (isChanged(snapshot1.door_status, snapshot2.door_status))
+            json += snapshot1.door_status.toJson(mapper);
+        if (isChanged(snapshot1.engine_speed, snapshot2.engine_speed))
+            json += snapshot1.engine_speed.toJson(mapper);
+        if (isChanged(snapshot1.fuel_consumed_since_restart, snapshot2.fuel_consumed_since_restart))
+            json += snapshot1.fuel_consumed_since_restart.toJson(mapper);
+        if (isChanged(snapshot1.fuel_level, snapshot2.fuel_level))
+            json += snapshot1.fuel_level.toJson(mapper);
+        if (isChanged(snapshot1.headlamp_status, snapshot2.headlamp_status))
+            json += snapshot1.headlamp_status.toJson(mapper);
+        if (isChanged(snapshot1.ignition_status, snapshot2.ignition_status))
+            json += snapshot1.ignition_status.toJson(mapper);
+        if (isChanged(snapshot1.latitude, snapshot2.latitude))
+            json += snapshot1.latitude.toJson(mapper);
+        if (isChanged(snapshot1.longitude, snapshot2.longitude))
+            json += snapshot1.longitude.toJson(mapper);
+        if (isChanged(snapshot1.odometer, snapshot2.odometer))
+            json += snapshot1.odometer.toJson(mapper);
+        if (isChanged(snapshot1.speed_limit, snapshot2.speed_limit))
+            json += snapshot1.speed_limit.toJson(mapper);
+        if (isChanged(snapshot1.steering_wheel_angle, snapshot2.steering_wheel_angle))
+            json += snapshot1.steering_wheel_angle.toJson(mapper);
+        if (isChanged(snapshot1.torque_at_transmission, snapshot2.torque_at_transmission))
+            json += snapshot1.torque_at_transmission.toJson(mapper);
+        if (isChanged(snapshot1.transmission_gear_position, snapshot2.transmission_gear_position))
+            json += snapshot1.transmission_gear_position.toJson(mapper);
+        if (isChanged(snapshot1.turning_lights, snapshot2.turning_lights))
+            json += snapshot1.turning_lights.toJson(mapper);
+        if (isChanged(snapshot1.vehicle_speed, snapshot2.vehicle_speed))
+            json += snapshot1.vehicle_speed.toJson(mapper);
+        if (isChanged(snapshot1.windshield_wiper_status, snapshot2.windshield_wiper_status))
+            json += snapshot1.windshield_wiper_status.toJson(mapper);
         return json;
     }
 
     public static boolean isChanged(Datapoint point1, Datapoint point2) {
         return point1 != null && point2 != null && point1.getValue() != point2.getValue();
-    }
-
-    public static String toJson(Datapoint datapoint) throws JsonProcessingException {
-        return (new ObjectMapper()).writeValueAsString(datapoint) + '\n';
     }
 
 }

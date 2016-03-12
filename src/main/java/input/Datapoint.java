@@ -1,5 +1,8 @@
 package input;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class Datapoint {
     private final Datatype datatype;
     private final double value;
@@ -19,7 +22,7 @@ public class Datapoint {
         try {
             return Double.valueOf(string.substring(string.indexOf(':') + 1));
         } catch (Exception e) {
-
+            System.out.println(string);
         }
         return 404;
     }
@@ -35,4 +38,9 @@ public class Datapoint {
     public double getTime() {
         return time;
     }
+
+    public String toJson(ObjectMapper mapper) throws JsonProcessingException {
+        return mapper.writeValueAsString(this) + '\n';
+    }
+
 }
