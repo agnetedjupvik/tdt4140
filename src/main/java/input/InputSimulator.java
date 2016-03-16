@@ -21,7 +21,7 @@ public class InputSimulator implements Input {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        timeDisplacement = getTimeDisplacement(datapoints.get(12000));//TODO: Skal egentlig være 0
+        //timeDisplacement = getTimeDisplacement(datapoints.get(12000));//TODO: Skal egentlig være 0
 
     }
 
@@ -65,8 +65,7 @@ public class InputSimulator implements Input {
     public Snapshot getLatestDataPoints() {
         double currTime = System.currentTimeMillis() / 1000.0;
         while (index < datapoints.size() && currTime > datapoints.get(index).getTime() + timeDisplacement) {
-            index++;
-            snapshot.addPoint(datapoints.get(index));
+            snapshot.addPoint(datapoints.get(index++));
         }
         if (index >= datapoints.size()) {
             timeDisplacement = getTimeDisplacement(datapoints.get(0));
