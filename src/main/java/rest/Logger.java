@@ -39,8 +39,10 @@ public class Logger implements CommandLineRunner {
                 writer = new PrintWriter("src/main/resources/logfiles/" + System.currentTimeMillis());
                 File[] files = logFolder.listFiles();
                 Arrays.sort(files);
-                if (files.length > 2) {
+                while (files.length > 2) {
                     files[0].delete();
+                    files = logFolder.listFiles();
+                    Arrays.sort(files);
                 }
                 i = 0;
             }
