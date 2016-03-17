@@ -49,7 +49,7 @@ app.controller("ChartController", ["$scope", "$resource", "$interval", "$timeout
                     $scope.data[0].shift();
                     $scope.labels.shift();
                 }
-                var date = new Date(speedpoint.time * 1000);
+                var date = new Date(speedpoint.timestamp * 1000);
 
                 if (!$scope.currentspeed){
                     if ($scope.supress){
