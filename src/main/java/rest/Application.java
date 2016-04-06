@@ -2,6 +2,7 @@ package rest;
 
 import input.Input;
 import input.InputSimulator;
+import notifications.MailNotifications;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,6 +17,7 @@ public class Application {
     public static Input inputSimulator = new InputSimulator("downtown-crosstown.json");
 
     public static void main(String[] args) {
+        new MailNotifications().startNotifications();
         SpringApplication.run(Application.class, args);
     }
 

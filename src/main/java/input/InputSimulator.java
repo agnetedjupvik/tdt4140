@@ -21,7 +21,7 @@ public class InputSimulator implements Input {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //timeDisplacement = getTimeDisplacement(datapoints.get(12000));//TODO: Skal egentlig være 0
+        timeDisplacement = getTimeDisplacement(datapoints.get(12000));//TODO: Skal egentlig være 0
 
     }
 

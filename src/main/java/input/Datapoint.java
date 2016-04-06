@@ -58,4 +58,13 @@ public class Datapoint {
         return mapper.writeValueAsString(this) + '\n';
     }
 
+
+    @Override
+    public String toString() {
+        return "Datapoint{" +
+                "datatype=" + datatype +
+                ", value=" + value +
+                ", time=" + time +
+                '}';
+    }
 }

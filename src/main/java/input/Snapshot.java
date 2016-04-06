@@ -162,4 +162,28 @@ public class Snapshot {
         return point1 != null && point2 != null && point1.getValue() != point2.getValue();
     }
 
+    @Override
+    public String toString() {
+        return "Snapshot{" +
+                "accelerator_pedal_position=" + accelerator_pedal_position +
+                ", brake_pedal_status=" + brake_pedal_status +
+                ", button_state=" + button_state +
+                ", door_status=" + door_status +
+                ", engine_speed=" + engine_speed +
+                ", fuel_consumed_since_restart=" + fuel_consumed_since_restart +
+                ", fuel_level=" + fuel_level +
+                ", headlamp_status=" + headlamp_status +
+                ", ignition_status=" + ignition_status +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", odometer=" + odometer +
+                ", steering_wheel_angle=" + steering_wheel_angle +
+                ", torque_at_transmission=" + torque_at_transmission +
+                ", transmission_gear_position=" + transmission_gear_position +
+                ", vehicle_speed=" + vehicle_speed +
+                ", speed_limit=" + speed_limit +
+                ", windshield_wiper_status=" + windshield_wiper_status +
+                ", turning_lights=" + turning_lights +
+                '}';
+    }
 }
