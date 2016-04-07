@@ -24,7 +24,7 @@ public class Logger implements CommandLineRunner {
     public void getSnapshot(Input input) throws InterruptedException, JsonProcessingException, FileNotFoundException {
 
         Snapshot snapshot = new Snapshot();
-        File logFolder = new File("src/main/resources/logfiles");
+        File logFolder = new File("logfiles");
         PrintWriter writer = new PrintWriter(logFolder.getPath() + '/' + System.currentTimeMillis());
         int i = 0;
 
@@ -36,7 +36,7 @@ public class Logger implements CommandLineRunner {
             snapshot = newSnapshot;
             if (++i > 100) {
                 writer.close();
-                writer = new PrintWriter("src/main/resources/logfiles/" + System.currentTimeMillis());
+                writer = new PrintWriter("logfiles/" + System.currentTimeMillis());
                 File[] files = logFolder.listFiles();
                 Arrays.sort(files);
                 while (files.length > 2) {
