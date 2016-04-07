@@ -17,7 +17,7 @@ public class Application {
     public static Input inputSimulator = new InputSimulator("downtown-crosstown.json");
 
     public static void main(String[] args) {
-        new MailNotifications().startNotifications();
+        // new MailNotifications().startNotifications();
         SpringApplication.run(Application.class, args);
     }
 

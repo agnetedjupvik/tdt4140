@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Watchdog</title>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/turningChart.js"></script>
+    <script src="/bower_components/Chart.js/Chart.min.js"></script>
+    <script src="/bower_components/angular-chart.js/dist/angular-chart.js"></script>
+    <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css">
+    <link rel="stylesheet" href="css/currspeedchart.css">
+
+</head>
+<body ng-app="myApp">
+<div ng-controller="ChartController">
+
+    <div class="chart-container">
+        <h1>Electronic Stability Programme Chart</h1>
+        <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels"
+                chart-legend="true" chart-series="series" click="onClick"></canvas>
+    </div>
+</div>
+</body>
+</html>

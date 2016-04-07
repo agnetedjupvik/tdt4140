@@ -13,6 +13,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 
+
 /**
  * Created by Espen Meidell <espen.meidell@gmail.com> on 06.04.16.
  */
@@ -99,6 +100,7 @@ public class MailNotifications {
                     "Kind Regards,\n" +
                     "The WatchDog Team");
             Transport.send(message);
+
 
         } catch (Exception e) {
             e.printStackTrace();
