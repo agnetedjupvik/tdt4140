@@ -24,6 +24,7 @@ public class Snapshot {
     public Datapoint speed_limit;
     public Datapoint windshield_wiper_status;
     public Datapoint turning_lights;
+    public Datapoint abs;
 
     public Snapshot() {
 
@@ -50,6 +51,7 @@ public class Snapshot {
         this.speed_limit = snapshot.speed_limit;
         this.windshield_wiper_status = snapshot.windshield_wiper_status;
         this.turning_lights = snapshot.turning_lights;
+        this.abs = snapshot.abs;
 
     }
 
@@ -112,6 +114,9 @@ public class Snapshot {
             case turning_lights:
                 turning_lights = datapoint;
                 break;
+            case abs:
+                abs = datapoint;
+                break;
         }
     }
 
@@ -155,6 +160,8 @@ public class Snapshot {
             json += snapshot1.vehicle_speed.toJson(mapper);
         if (isChanged(snapshot1.windshield_wiper_status, snapshot2.windshield_wiper_status))
             json += snapshot1.windshield_wiper_status.toJson(mapper);
+        if (isChanged(snapshot1.abs, snapshot2.abs))
+            json += snapshot1.abs.toJson(mapper);
         return json;
     }
 
@@ -184,6 +191,7 @@ public class Snapshot {
                 ", speed_limit=" + speed_limit +
                 ", windshield_wiper_status=" + windshield_wiper_status +
                 ", turning_lights=" + turning_lights +
+                ", abs=" + abs +
                 '}';
     }
 }

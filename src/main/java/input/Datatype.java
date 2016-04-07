@@ -19,5 +19,6 @@ public enum Datatype {
     vehicle_speed,
     speed_limit,
     windshield_wiper_status,
-    turning_lights
+    turning_lights,
+    abs
 }
