@@ -8,7 +8,9 @@ app.controller("ChartController", ["$scope", "$resource", "$interval", function 
     Chart.defaults.global.scaleStepWidth = 1;
     Chart.defaults.global.scaleStartValue = -1;
     Chart.defaults.global.animation = false;
+    Chart.defaults.global.scaleLabel = "<%=getlabel(value)%>";
     Chart.defaults.Line.bezierCurve = false;
+    Chart.defaults.Line.datasetFill = false;
     var running = true;
 
     $scope.labels = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
@@ -16,7 +18,7 @@ app.controller("ChartController", ["$scope", "$resource", "$interval", function 
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ];
     $scope.current = 0;
-    $scope.series = ["adsf"];
+    $scope.series = ["Turning Lights"];
     var rest = $resource("/api");
     $interval(function () {
         rest.get(function (datapoints) {
@@ -40,3 +42,8 @@ app.controller("ChartController", ["$scope", "$resource", "$interval", function 
     }, 1000);
 
 }]);
+
+function getlabel(value) {
+    if(value!=0)return value==1?'left':'right'
+    return '';
+}
