@@ -6,7 +6,7 @@ app.controller("ChartController", ["$scope", "$resource", "$interval", function 
     Chart.defaults.global.scaleOverride = true;
     Chart.defaults.global.scaleSteps = 2;
     Chart.defaults.global.scaleStepWidth = 1;
-    Chart.defaults.global.scaleStartValue = -1;
+    Chart.defaults.global.scaleStartValue = 0;
     Chart.defaults.global.animation = false;
     Chart.defaults.global.scaleLabel = "<%=getlabel(value)%>";
     Chart.defaults.Line.bezierCurve = false;
