@@ -19,7 +19,7 @@ import javax.mail.internet.MimeMessage;
 public class MailNotifications {
 
     private long lastmailsent = 0;
-    private String recipient = "espen.meidell@gmail.com";
+    private String recipient = "watchdog.alerter@gmail.com";
 
     private  int counter = 0;
 
@@ -89,7 +89,7 @@ public class MailNotifications {
 
 
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("koieapplicationgruppe3@gmail.com"));
+            message.setFrom(new InternetAddress("watchdog.alerter@gmail.com"));
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(recipient));
             message.setSubject("Watchdog Notification");
