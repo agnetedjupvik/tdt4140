@@ -18,7 +18,7 @@ app.controller("ChartController", ["$scope", "$resource", "$interval", function 
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ];
     $scope.current = 0;
-    $scope.series = ["Turning Lights"];
+    $scope.series = ["ESP"];
     var rest = $resource("/api");
     $interval(function () {
         rest.get(function (datapoints) {
