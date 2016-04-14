@@ -44,6 +44,9 @@ app.controller("ChartController", ["$scope", "$resource", "$interval", function 
 }]);
 
 function getlabel(value) {
-    if(value!=0)return value==1?'left':'right'
-    return '';
+    if(value ==0) {
+        return "Off";
+    } else if(value == 1) {
+        return "On";
+    }
 }
