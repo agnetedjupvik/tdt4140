@@ -1,5 +1,5 @@
 group 'com.watchdog'
-version '0.0.2'
+version '0.0.3'
 
 buildscript {
     repositories {
@@ -17,7 +17,7 @@ apply plugin: 'spring-boot'
 
 jar {
     baseName = 'watchrest'
-    version = '0.0.2'
+    version = '0.0.3'
 }
 
 repositories {
